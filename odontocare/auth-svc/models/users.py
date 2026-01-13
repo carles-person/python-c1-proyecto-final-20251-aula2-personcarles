@@ -3,15 +3,10 @@ Docstring for odontocare.auth-svc.models
 """
 
 from sqlalchemy import String
-from sqlalchemy.orm import mapped_column, Mapped, DeclarativeBase
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import mapped_column, Mapped
+from .database import db
 
-# inicialitzo la BD segons documentacio flask-sqlalchemy
-class Base(DeclarativeBase):
-    pass
-
-db = SQLAlchemy(model_class=Base)
-
+# defineixo la classe usuari
 class User(db.Model):
     __tablename__ = 'users'
     id:Mapped[int] = mapped_column(primary_key=True)
