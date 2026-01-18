@@ -1,0 +1,24 @@
+
+
+
+services:
+
+  authsvc:
+    build: .
+    env_file:
+      - odontocare.env
+
+  adminsvc:
+    build: .
+
+
+  agendasvc:
+    build: .
+
+
+  apisvc:
+    build: .
+    depends_on:
+      - authsvc
+      - adminsvc
+      - agendasvc

@@ -1,0 +1,58 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Start Auth SVC",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/odontocare/auth-svc",
+            "program": "auth-server.py",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/odontocare/.env"
+        },
+        {
+            "name": "Start Admin SVC",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/odontocare/admin-svc",
+            "program": "admin-server.py",
+            "console": "integratedTerminal",
+            "envFile":"${workspaceFolder}/odontocare/.env"
+        },
+        {
+            "name": "Start Agenda SVC",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/odontocare/agenda-svc",
+            "program": "agenda-server.py",
+            "console": "integratedTerminal",
+            "envFile":"${workspaceFolder}/odontocare/.env"
+        },
+        {
+            "name": "Start API",
+            "type": "debugpy",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/odontocare/api-gateway",
+            "program": "api-server.py",
+            "console": "integratedTerminal",
+            "envFile":"${workspaceFolder}/odontocare/.env"
+        }
+    ],
+
+    "compounds": [
+        {
+            "name": "OdontoCare",
+            "configurations": [
+                "Start Auth SVC",
+                "Start Admin SVC",
+                "Start Agenda SVC",
+                "Start API"
+            ],
+            "stopAll": true
+        }
+    ]
+}

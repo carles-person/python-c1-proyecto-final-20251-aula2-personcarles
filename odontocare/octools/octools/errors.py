@@ -33,6 +33,14 @@ class OCERR(StrEnum):
     AGENDA_SVC_ACCESS_ERROR = 'Failed to access AGENDA_SVC'
     ENTITY_IS_WRONG = 'Wrong Entity passed'
     ENTITY_REGISTRATION_ERROR = "Failed to create an entity"
+    ENTITY_NOT_FOUND = "Entity not found"
+    DB_ACCESS_ERROR = "DATABASE: Prolbems accessing the database"
+    NOT_FOUND = "ERROR 404: Page Not Found"
+    METHOD_NOT_ALLOWED = "ERROR 405: Method Not Allowed"
+    JSON_ERROR = "ERROR 400: Bad Request - JSON Error in the message Body"
+    TOKEN_ERROR = "ERROR 401: Invalid Token or Missing Token"
+
+
 
     
 

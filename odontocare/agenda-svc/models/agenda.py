@@ -20,8 +20,8 @@ class Appointment(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'date': self.dt_start.date(),
-            'start': self.dt_start.time(),
+            'date': self.dt_start.date().isoformat(),
+            'start': self.dt_start.time().isoformat(),
             'duration_minutes': int((self.dt_end-self.dt_start).seconds/60), # arrodoniment a minuts
             'status': self.status
         }
@@ -31,11 +31,11 @@ class Appointment(db.Model):
             self.reason = json_data.get('reason')
             
             # converteixo dia, hora i duració a format datetime
-
             temp_date= dt.date.fromisoformat(json_data.get('date'))
             temp_start = dt.time.fromisoformat(json_data.get('start'))
             temp_start = dt.time(temp_start.hour, int(temp_start.minute /15)*15,0) # arrodoniment a 15minuts
-            temp_duration = int(json_data.get('duration_minutes'))*15 #arrodoniment a 15min
+            temp_duration = (int(json_data.get('duration'))/15)*15 #arrodoniment a 15min
+            if temp_duration <15: temp_duration=15
             self.dt_start=dt.datetime(temp_date.year,temp_date.month,temp_date.day,temp_start.hour,temp_start.minute,0)
             self.dt_end = self.dt_start + dt.timedelta(minutes=temp_duration)
 
@@ -57,6 +57,15 @@ class Appointment(db.Model):
             'duration_minutes': (self.dt_end - self.dt_start).seconds/60
 
         }
+    def parse_datetime(self, date_string:str, time_string:str, duration:int=15):
+        new_date = dt.date.fromisoformat(date_string)
+        new_time = dt.time.fromisoformat(time_string)
+        new_time_minute = int(new_time.minute/15)*15 # arrodoniment a quarts
+        new_duration = int(duration/15)*15 # orrodoniment a 15min
+        if new_duration <15:
+            new_duration=15
+        self.dt_start = dt.datetime(new_date.year, new_date.month, new_date.day, new_time.hour, new_time_minute, 0)
+        self.dt_end = self.dt_start + dt.timedelta(minutes=duration)
 
     @property
     def date(self):
