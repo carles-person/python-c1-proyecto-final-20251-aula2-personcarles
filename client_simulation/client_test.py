@@ -7,7 +7,6 @@ import random as rdm
 
 from modules import *
 
-
 def step_04():
     print(OCT.STEP04)
     token = auth_login('admin','admin')
