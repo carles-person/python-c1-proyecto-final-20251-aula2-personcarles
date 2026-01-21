@@ -12,6 +12,7 @@
             "cwd": "${workspaceFolder}/odontocare/auth-svc",
             "program": "auth-server.py",
             "console": "integratedTerminal",
+            "consoleName": "AUTH console",
             "envFile": "${workspaceFolder}/odontocare/.env"
         },
         {
@@ -20,8 +21,11 @@
             "request": "launch",
             "cwd": "${workspaceFolder}/odontocare/admin-svc",
             "program": "admin-server.py",
+            // "console": "integratedTerminal",
             "console": "integratedTerminal",
+            "consoleName": "ADMIN console",
             "envFile":"${workspaceFolder}/odontocare/.env"
+            
         },
         {
             "name": "Start Agenda SVC",
@@ -30,6 +34,7 @@
             "cwd": "${workspaceFolder}/odontocare/agenda-svc",
             "program": "agenda-server.py",
             "console": "integratedTerminal",
+            "consoleName": "AGENDA console",
             "envFile":"${workspaceFolder}/odontocare/.env"
         },
         {
@@ -39,6 +44,7 @@
             "cwd": "${workspaceFolder}/odontocare/api-gateway",
             "program": "api-server.py",
             "console": "integratedTerminal",
+            "consoleName": "API console",
             "envFile":"${workspaceFolder}/odontocare/.env"
         }
     ],

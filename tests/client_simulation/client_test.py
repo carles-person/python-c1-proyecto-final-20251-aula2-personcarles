@@ -1,7 +1,3 @@
-
-
-
-
 import requests
 import json
 import time as t
@@ -171,54 +167,54 @@ if __name__ == "__main__":
     print('\n'*100)
     print(OCT.TITLE)
     t.sleep(1)
-
+    SLEEP_TIME = 4
     # 04. login admin/admin
     token = step_04()
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
     
     # 05.lhealth check
     step_05(token)
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 06. Canvi password
     step_06(token)
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 07. Importar usuaris, cliniques, doctors
     step_07(token)
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 08. Afegir (random, usuaris, doctors)
     step_08(token)
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 09 Afegir cita i cita conflictiva
     step_09(token)
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 10. Afegir 1000 cites Random
     step_10(token)
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 11. Canviar a usuari assistent
     token2 = step_11()
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 12. Error en afegit nova cita (permis)
     step_12(token2)
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 13. prova anul·lació cites
     step_13(token2)
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 14. Filtre cites varis
     step_14(token2)
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
     
     # 15. Login Metge
     token_metge = step_15()
-    t.sleep(2)
+    t.sleep(SLEEP_TIME)
 
     # 16. Prova consulta agenda
     step_16(token_metge)
@@ -230,9 +226,6 @@ if __name__ == "__main__":
 
 
           
-
-
-
 
 
 

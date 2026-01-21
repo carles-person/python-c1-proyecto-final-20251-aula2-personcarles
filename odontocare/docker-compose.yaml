@@ -4,21 +4,55 @@
 services:
 
   authsvc:
-    build: .
+    image: oc/auth-svc
+    build: ./auth-svc
+
     env_file:
       - odontocare.env
 
+    networks:
+      - oc-backend
+
   adminsvc:
-    build: .
+    image: oc/admin-svc
+    build: ./admin-svc
+
+    networks:
+      - oc-backend
+    env_file:
+      - odontocare.env
 
 
   agendasvc:
-    build: .
+    image: oc/agenda-svc
+    build: ./agenda-svc
+
+    env_file:
+      - odontocare.env
+
+    networks:
+      - oc-backend
 
 
   apisvc:
-    build: .
+    image: oc/api-gateway
+    build: ./api-gateway
     depends_on:
       - authsvc
       - adminsvc
       - agendasvc
+    env_file:
+      - odontocare.env
+    ports:
+      - "4000:4000"
+  
+    networks:
+      - oc-backend
+      - oc-frontend
+
+
+networks:
+  oc-backend:
+  
+  oc-frontend:
+
