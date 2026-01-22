@@ -68,9 +68,10 @@ def get_entities(entity:str):
         :returns: json message
         :rtype: json
         ```
-        body = {
-            "valid": [True o False],
-            (solo si True) "role": rol}
+        response = [
+	        { "{entity}": {self.name} (id={self.id})(user_id={self.id_user}) }
+
+            ]
         ```
         :returns status: HTTP_OK, HPPT_400 (no json inforecieved), HTTP_401(Unauthorized) or HTTP_50X (problems with DB)
         """
@@ -115,14 +116,13 @@ def create_entity():
                 "username": usuari a registrar,
                 "password": password_del_usuario
             }
-            }
     ```
     :returns: json message
     :rtype: json
     ```
-    body = {
-        "valid": [True o False],
-        (solo si True) "role": rol}
+    response = {
+	'id': new_patient.id,
+	'message': f'Patient created with id:{new_patient.id}
     ```
     :returns status: HTTP_OK, HPPT_400 (no json inforecieved), HTTP_401(Unauthorized) or HTTP_50X (problems with DB)
     """

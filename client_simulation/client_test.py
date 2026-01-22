@@ -1,4 +1,4 @@
-372import requests
+import requests
 import json
 import time as t
 import random as r

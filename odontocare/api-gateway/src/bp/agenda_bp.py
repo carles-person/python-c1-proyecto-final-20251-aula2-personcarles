@@ -41,6 +41,43 @@ def get_appointment1():
 @agenda_bp.route('/add', methods=['POST'])
 @role_required([OCROL.ADMIN, OCROL.ASSISTANT], SECRET_KEY)
 def add_appointment():
+    """
+        API Publica: Afegeixo una nova cita a la BBDD de cites
+        :ROL: "ADMIN", "ASSSITANT"
+
+        ```json
+        header = {
+            ...
+            "Authorization": "Bearer [el token de usuario fa sol·licitud]}
+            }
+        body = {
+            // sistem rounds up to 15 minutes slots
+            "date": "2025-01-01", 	// date in ISO format
+            "time": "11:45", 		// time in ISO format
+            "duration": 30,			//minutes
+            "patient_id": {id},		// id from patient table
+            "doctor_id": {id},		// id from doctor table
+            "clinic_id": {id},		// id from clinic table
+            "user_id": {id}			// id from user logged in 
+            }
+            ```
+
+        returns:
+        ```
+        response = {
+		'id': self.id,
+		'patient_id': self.id_patient,
+		'reason': self.reason,
+		'date': self.dt_start.date().isoformat(), 
+		'duration_minutes': duration
+	    }
+        ```
+        
+        """
+
+
+
+
     data = request.get_json(silent=True)
     if not data:
         return json_error(HTTPStatus.BAD_REQUEST, OCERR.JSON_ERROR)

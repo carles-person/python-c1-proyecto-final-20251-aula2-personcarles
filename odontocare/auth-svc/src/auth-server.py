@@ -219,7 +219,7 @@ def create_app():
         return json_message(HTTPStatus.OK, f'Password Usuari {user_id}:{user.username} ha canviat correctament')
     
                             
-    @app.route('/users', methods = ['GET'])
+    @app.route('/list', methods = ['GET'])
     def get_users():
         user_list = db.session.execute(db.select(User)).scalars().all()
         return jsonify([u.to_dict() for u in user_list])

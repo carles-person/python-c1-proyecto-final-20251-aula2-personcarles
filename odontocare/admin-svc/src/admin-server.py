@@ -202,8 +202,9 @@ def create_app():
         :returns json message: 
         ```
         body = {
-            "valid": [True o False],
-            (solo si True) "role": rol}
+            'id': new_patient.id,
+            'message': f'Patient created with id:{new_patient.id}
+            }
         ```
         :returns status: HTTP_OK, HPPT_400 (no json inforecieved), HTTP_401(Unauthorized) or HTTP_50X (problems with DB)
         """

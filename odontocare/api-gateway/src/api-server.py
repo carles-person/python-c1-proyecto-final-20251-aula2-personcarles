@@ -17,7 +17,6 @@ def create_app():
     app.config['OC_ADMIN_SVC'] = os.environ.get('OC_ADMIN_SVC','http://localhost:4002')
     app.config['OC_AGENDA_SVC'] = os.environ.get('OC_AGENDA_SVC','http://localhost:4003')
 
-   
 
     # defineixo error per metode o endpoint inexistent
     @app.errorhandler(404)

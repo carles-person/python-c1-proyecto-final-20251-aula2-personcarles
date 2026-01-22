@@ -70,14 +70,15 @@ def login():
     header = {
         'content-type': 'application/json'
     }
+    # crito AUTH_SVC/login
     try:
         response = requests.post(f'{current_app.config['OC_AUTH_SVC']}/login',headers=header,json=payload)
         return jsonify(response.json())
-    
+
     except:
         return json_error(HTTPStatus.INTERNAL_SERVER_ERROR,OCERR.AUTH_SVC_ACCESS_ERROR)
 
-@auth_bp.route('/validate/<int:id>')
+@auth_bp.route('/validate/<int:id>', methods = ['GET'])
 @role_required(OCROL.ADMIN,SECRET_KEY)
 def validate(id:int):
     """
@@ -137,7 +138,7 @@ def register():
     :return: json message
     :rtype: json
     ```
-        body = {
+        response = {
             "valid": [True o False],
             (solo si True) "role": rol}
         ```

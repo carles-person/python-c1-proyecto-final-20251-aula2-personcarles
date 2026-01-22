@@ -178,6 +178,40 @@ def create_app():
     @app.route('/add', methods = ['POST'])
     @token_required
     def create_appointment():
+        """
+        Afegeixo una nova cita a la BBDD de cites
+        
+        ```json
+        header = {
+            ...
+            "Authorization": "Bearer [el token de usuario fa sol·licitud]}
+            }
+        body = {
+            // sistem rounds up to 15 minutes slots
+            "date": "2025-01-01", 	// date in ISO format
+            "time": "11:45", 		// time in ISO format
+            "duration": 30,			//minutes
+            "patient_id": {id},		// id from patient table
+            "doctor_id": {id},		// id from doctor table
+            "clinic_id": {id},		// id from clinic table
+            "user_id": {id}			// id from user logged in 
+            }
+            ````
+
+        :returns:
+        :rtype: json
+        ```
+        response = {
+		'id': self.id,
+		'patient_id': self.id_patient,
+		'reason': self.reason,
+		'date': self.dt_start.date().isoformat(), 
+		'duration_minutes': duration
+	    }
+        ```
+        
+        """
+
 
         def check_entity(entity_type:str,entity_id:int, header)->bool:
             """
